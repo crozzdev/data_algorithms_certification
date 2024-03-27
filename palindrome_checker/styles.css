@@ -1,0 +1,118 @@
+:root {
+    --background_color: #0a0a23;
+    --text_color: #ffff;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background_color);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.freecodecamp-logo {
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.title {
+    color: var(--text_color);
+    margin: 30px 0;
+}
+
+@media only screen and (max-width: 500px) {
+    .title {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+}
+
+.palindrome-div {
+    width: min(100vw, 450px);
+    min-height: 100px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: 10px 0;
+    background-color: var(--text_color);
+    box-shadow: 0 6px 6px #002ead;
+}
+
+label {
+    color: #0a0a23;
+    margin-bottom: 20px;
+}
+
+.palindrome-input {
+    height: 30px;
+    width: 250px;
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 10px;
+    border: none;
+    border-bottom: 2px solid #5a01a7;
+}
+
+.user-input {
+    font-size: 1.4rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.palindrome-btn {
+    width: 90px;
+    border: none;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #5a01a7;
+    color: var(--text_color);
+    cursor: pointer;
+}
+
+.results-div {
+    overflow-y: auto;
+    word-wrap: break-word;
+    min-height: 50px;
+    color: black;
+}
+
+.hidden {
+    display: none;
+}
+
+.palindrome-definition-div {
+    background-color: rgb(6, 77, 6);
+    width: min(100vw, 450px);
+    min-height: 140px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 20px;
+    color: var(--text_color);
+    font-size: 1.3rem;
+}
+
+.palindrome-definition {
+    text-align: center;
+    vertical-align: middle;
+}
