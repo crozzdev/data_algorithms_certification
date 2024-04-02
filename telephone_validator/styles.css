@@ -1,0 +1,133 @@
+:root {
+    --phone-colors: #dfdfe2;
+    --gray-00: #fff;
+    --gray-blue: #3b3b4f;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--gray-blue);
+    font-family: 'Cogliostro', sans-serif;
+    color: var(--gray-00);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+#logo {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#header-title {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    display: block;
+    max-width: 380px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#outer-box-phone {
+    width: 250px;
+    height: 450px;
+    border: solid black 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px auto;
+    background-color: var(--phone-colors);
+}
+
+#background-camera-phone {
+    width: 100%;
+    height: 25px;
+    background-color: black;
+}
+
+#camera-phone {
+    width: 10px;
+    height: 10px;
+    background-color: var(--phone-colors);
+    margin: auto;
+    margin-bottom: 15px;
+    border-radius: 50%;
+
+}
+
+#inner-box-phone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+
+}
+
+#label-user-input {
+    margin: 10px auto 5px;
+
+}
+
+#user-input {
+    display: block;
+    margin: 10px auto;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    height: 42px;
+    font-size: 16px;
+}
+
+#results-div {
+    overflow-y: auto;
+    height: 265px;
+    width: 100%;
+}
+
+#buttons-box {
+    background-color: black;
+    width: 220px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    margin: 10px;
+    border: 3px;
+    width: 80px;
+    cursor: pointer;
+    font-size: 18px;
+    color: black;
+    background-color: #ffffff;
+    background-image: linear-gradient(#ffffff, #928d86);
+    border-color: #ffffff;
+}

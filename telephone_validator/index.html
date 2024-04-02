@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Telephone number validator</title>
+    <meta name="viewport" content="width=device-width , initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <link href="styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cagliostro&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg" alt="freecodecamp logo">
+        <h1 id="header-title">Telephone Number Validator</h1>
+    </header>
+    <main>
+        <div id="outer-box-phone">
+            <div id="background-camera-phone">
+                <div id="camera-phone"></div>
+            </div>
+
+            <div id="inner-box-phone">
+                <label for="user-input" id="label-user-input">Enter a Phone Number:</label>
+                <input maxlength="20" id="user-input" type="text" />
+                <div id="results-div"></div>
+            </div>
+
+            <div id="buttons-box">
+                <button class="btn" id="check-btn" type="button">Check</button>
+                <button class="btn" id="clear-btn" type="button">Clear</button>
+            </div>
+
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
