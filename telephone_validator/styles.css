@@ -113,6 +113,13 @@ main {
     width: 100%;
 }
 
+.results-text {
+    font-size: 1.2rem;
+    padding: 30px;
+    text-align: center;
+    margin: 5px 0;
+}
+
 #buttons-box {
     background-color: black;
     width: 220px;
