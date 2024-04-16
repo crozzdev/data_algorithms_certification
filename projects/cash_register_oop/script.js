@@ -2,48 +2,40 @@ const $inputCash = document.getElementById("cash");
 const $purchaseBtn = document.getElementById("purchase-btn");
 const $totalDisplayDiv = document.querySelector(".total-display");
 const $changeDueDiv = document.getElementById("change-due");
-const $drawerDisplayParagraphs = document.querySelectorAll(".drawer-display")
+const $changeDrawerDiv = document.querySelector(".change-drawer");
 
 
-const CURRENCY = {
-    PENNY: 0.01,
-    NICKLE: 0.05,
-    DIME: 0.1,
-    QUARTER: 0.25,
-    ONE: 1,
-    FIVE: 5,
-    TEN: 10,
-    TWENTY: 20,
-    "ONE HUNDRED": 100,
-}
 
 
-let price = 1.87;
-let cash = 100;
+const CURRENCIES = [
+    ["PENNY", 0.01],
+    ["NICKLE", 0.05],
+    ["DIME", 0.1],
+    ["QUARTER", 0.25],
+    ["ONE", 1],
+    ["FIVE", 5],
+    ["TEN", 10],
+    ["TWENTY", 20],
+    ["ONE HUNDRED", 100],
+]
+
+
+
+let price = 19.5;
 
 
 let cid = [
-    ["PENNY", 1.01],
-    ["NICKEL", 2.05],
-    ["DIME", 3.1],
-    ["QUARTER", 4.25],
-    ["ONE", 90],
-    ["FIVE", 55],
-    ["TEN", 20],
-    ["TWENTY", 60],
-    ["ONE HUNDRED", 100],
+    ["PENNY", 1.01, "Pennies"],
+    ["NICKEL", 2.05, "Nickels"],
+    ["DIME", 3.1, "Dimes"],
+    ["QUARTER", 4.25, "Quarters"],
+    ["ONE", 90, "Ones"],
+    ["FIVE", 55, "Fives"],
+    ["TEN", 20, "Tens"],
+    ["TWENTY", 60, "Twenties"],
+    ["ONE HUNDRED", 100, "Hundreds"],
 ];
-let drawCash = [
-    ["PENNY", 0],
-    ["NICKEL", 0],
-    ["DIME", 0],
-    ["QUARTER", 0],
-    ["ONE", 0],
-    ["FIVE", 0],
-    ["TEN", 0],
-    ["TWENTY", 0],
-    ["ONE HUNDRED", 0],
-];
+
 
 
 const clearOutput = () => {
@@ -51,6 +43,8 @@ const clearOutput = () => {
     $changeDueDiv.innerHTML = "";
 
 }
+
+
 
 const outputMessage = msg => {
     clearOutput();
@@ -60,36 +54,65 @@ const outputMessage = msg => {
 
 const updateDrawerDisplay = () => {
 
-        for (let i = 0; i < $drawerDisplayParagraphs.length; i++) {
-            let item = $drawerDisplayParagraphs[i]
-            item.textContent += ` ${cid[i][1]}`
-        }
+    $changeDrawerDiv.innerHTML = "<p>Change in drawer:</p>";
+    for (let i = 0; i < cid.length; i++) {
+        $changeDrawerDiv.innerHTML += `<p>${cid[i][2]}: $${cid[i][1]}`
     }
-
-
-
-const calculateDraw = cash => {
-    //TODO: Create the calculation of the draw and the output message
-    const outputMsg = ``
-
-
 }
 
-$purchaseBtn.addEventListener("click", () => {
-    const input = Number($inputCash.value)
-    if (!$inputCash.value || isNaN(input)) {
-        outputMessage("Please enter a valid input")
-        return;
-    } else if (input < price) {
-        outputMessage("Customer does not have enough money to purchase the item")
-        return
-    } else if (input === price) {
-        outputMessage("No change due - customer paid with exact cash")
-        return
+
+
+const calculateDraw = (cash, open) => {
+    let outputDrawElements = ``
+    let toReturnCopy = cash
+    if(!open){
+        outputDrawElements = "<p>Status: CLOSED</p>"
     } else {
-        calculateDraw(input);
-        updateDrawerDisplay();
+        outputDrawElements = "<p>Status: OPEN</p>"
     }
+    CURRENCIES.slice().reverse().forEach((currency, index) => {
+        const currencyValue = Number((currency[1]).toFixed(2))
+        const currencyLabel = currency[0]
+        let currToReturn = 0
+        if (toReturnCopy >= currencyValue && Number((cid[cid.length - index - 1][1]).toFixed(2)) > 0) {
+            while (toReturnCopy >= currencyValue && Number((cid[cid.length - index - 1][1]).toFixed(2)) >= currencyValue) {
+                currToReturn += currencyValue;
+                toReturnCopy = Number((toReturnCopy - currencyValue).toFixed(2));
+                cid[cid.length - index - 1][1] = Number((cid[cid.length - index - 1][1] - currencyValue).toFixed(2));
+            }
+            outputDrawElements += `<p>${currencyLabel}: $${currToReturn.toFixed(2)}</p>`
+        }
+    })
+    if (toReturnCopy > 0) {
+        return `<p>Status: INSUFFICIENT_FUNDS</p>`;
+    }
+    return outputDrawElements;
+}
+
+
+$purchaseBtn.addEventListener("click", () => {
+    const cash = Number($inputCash.value)
+    let status
+    if (!$inputCash.value || isNaN(cash)) {
+        status = "Please enter a valid input"
+    } else if (cash < price) {
+        status = "Customer does not have enough money to purchase the item"
+        alert(status);
+    } else if (cash === price) {
+        status = "<p>No change due - customer paid with exact cash</p>"
+    } else {
+        const toReturn = cash - price;
+        const totalCid = cid.reduce((acc, num) => acc + num[1], 0);
+        if (toReturn > totalCid) {
+            status = "<p>Status: INSUFFICIENT_FUNDS</p>"
+        } else if (toReturn == totalCid) {
+            status = calculateDraw(toReturn, false)
+        } else {
+            status = calculateDraw(toReturn, true)
+        }
+    }
+    outputMessage(status)
+    updateDrawerDisplay()
 })
 
 window.onload = () => {
