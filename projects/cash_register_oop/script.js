@@ -54,9 +54,7 @@ const clearOutput = () => {
 
 const outputMessage = msg => {
     clearOutput();
-    const $statusParagraph = document.createElement("p");
-    $statusParagraph.textContent = msg
-    $changeDueDiv.appendChild($statusParagraph);
+    $changeDueDiv.innerHTML = msg;
 }
 
 
@@ -71,7 +69,8 @@ const updateDrawerDisplay = () => {
 
 
 const calculateDraw = cash => {
-    
+    //TODO: Create the calculation of the draw and the output message
+    const outputMsg = ``
 
 
 }
