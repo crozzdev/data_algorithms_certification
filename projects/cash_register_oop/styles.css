@@ -1,0 +1,139 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --register-background: #2D3E50;
+    --register-borders: #4CAF50;
+
+
+}
+
+body {
+    background-color: #7fabcd;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+h1 {
+    padding: 20px;
+    margin: 20px;
+    color: #2D3E50;
+    font-weight: bold;
+}
+
+
+#cash-label {
+    padding-bottom: 5px;
+    color: #345B7C;
+}
+
+#purchase-btn {
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    margin: 10px;
+    color: #0a0a23;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #345B7C;
+    background-image: linear-gradient(#456E9C, #345B7C);
+    border-color: #2C4A6C;
+    color: #ffffff;
+    /* Ensuring text is legible against the dark background */
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+    border-width: 3px;
+}
+
+
+#register-container {
+    width: 300px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--register-background);
+    border-radius: 20px 20px 0 0;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.total-display {
+    background-color: black;
+    color: var(--register-borders);
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.change-drawer {
+    border: 2px solid var(--register-borders);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.change-drawer p {
+    margin: 5px 0;
+}
+
+#drawer-box {
+    width: 300px;
+    height: 50px;
+    background-color: var(--register-background);
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#drawer-box-circle {
+
+    background-color: var(--register-borders);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+
+}
+
+#change-due {
+    text-align: left;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 500px) {
+    h1 {
+        text-align: center;
+    }
+
+    #purchase-btn {
+        padding: 12px 24px;
+        font-size: 18px;
+        min-height: 44px;
+        width: auto;
+        border-radius: 4px;
+    }
+
+    #register-container,
+    #drawer-box {
+        padding: 10px;
+        width: 200px;
+    }
+
+    #register-container p {
+        font-size: 16px;
+        /* Or whatever size makes sense for your design */
+    }
+
+}
